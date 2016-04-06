@@ -42,8 +42,8 @@ def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         post.delete()
-        return redirect('/')
-    else:    
+        return redirect('blog.views.post_list')
+    else:
         return render(request, 'blog/post_delete.html', {'post': post})
 
 def post_draft_list(request):
