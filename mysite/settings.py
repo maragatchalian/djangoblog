@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #    }
 # }
 
-SITE_ID = 1 
+SITE_ID = 3 
 
 DATABASES = {
     'default': {
