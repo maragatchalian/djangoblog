@@ -1,21 +1,29 @@
-
 {% load staticfiles %}
 <html>
     <head>
-        <title> Mara's Blog </title>
+        <title> Mara Gatchalian </title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+
     </head>
 
     <body>
         <div class="page-header">
             {% if user.is_authenticated %}
-            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> <a href="/"> <h1>
+                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a><a href="/"> 
+            {% else %}
+                {% load socialaccount %}
+                <a href="{% provider_login_url "facebook" method="oauth2" %}" class="top-menu"> <h4>Login</h4></a> 
+
             {% endif %}
+
+            <h1> nth Attempt </a></h1>
+            <p> <h4> Mara's nth attempt in creating a blog using Django.</h4></p> 
             
-            Mara's Blog </a></h1>
         </div>
 
         <div class="content container">
@@ -26,6 +34,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>
