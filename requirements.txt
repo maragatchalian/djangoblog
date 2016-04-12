@@ -29,7 +29,7 @@ Django==1.8
 django-allauth==0.25.2
 django-facebook==6.0.3
 docutils==0.12
-dynd===f641248
+# dynd===f641248
 et-xmlfile==1.0.1
 fastcache==1.0.2
 Flask==0.10.1
