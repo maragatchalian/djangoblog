@@ -132,7 +132,8 @@ DATABASES = {
         'NAME': 'djangoblog',
         'USER': 'mara',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        # 'HOST': 'localhost',
+         'HOST': 'https://nth-attempt.herokuapp.com/',
         'PORT': '',
     }
 }
