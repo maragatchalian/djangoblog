@@ -46,10 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'django.contrib.sites',
-#   'allauth',
-#   'allauth.account',
-#   'allauth.socialaccount',
-#   'allauth.socialaccount.providers.facebook',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 SITE_ID = 3
