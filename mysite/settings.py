@@ -54,17 +54,17 @@ INSTALLED_APPS = [
 
 SITE_ID = 3
 
-# SOCIALACCOUNT_PROVIDERS = \
-#    {'facebook':
-#       {'METHOD': 'oauth2',
-#        'SCOPE': ['email', 'public_profile', 'user_friends'],
-#        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-#        'FIELDS': [
- #           'id',
-  #          'email',
-   #         'name',
-    #        'first_name',
-     #       'last_name',
+SOCIALACCOUNT_PROVIDERS = \
+   {'facebook':
+      {'METHOD': 'oauth2',
+       'SCOPE': ['email', 'public_profile', 'user_friends'],
+       'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+       'FIELDS': [
+           'id',
+           'email',
+           'name',
+           'first_name',
+           'last_name',
             #'verified',
             #'locale',
             #'timezone',
@@ -74,8 +74,8 @@ SITE_ID = 3
     #    'EXCHANGE_TOKEN': True,
         #'LOCALE_FUNC': 'path.to.callable',
     #    'LOCALE_FUNC':  lambda request: 'en-US',
-    #    'VERIFIED_EMAIL': False,
-    #    'VERSION': 'v2.4'}}
+       'VERIFIED_EMAIL': False,
+       'VERSION': 'v2.4'}}
 
 #LOGIN_REDIRECT_URL = ('http://localhost:8000')
 LOGIN_REDIRECT_URL = '/'
