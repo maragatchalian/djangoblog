@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response from django.http import HttpResponseRedirect from
+    django.contrib.auth.forms import UserCreationForm from
+    django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Post, Comment
@@ -91,4 +93,26 @@ def comment_remove(request, pk):
     post_pk = comment.post.pk
     comment.delete()
     return redirect('blog.views.post_detail', pk=post_pk)
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/accounts/register/complete')
+
+    else:
+        form = UserCreationForm()
+    token = {}
+    token.update(csrf(request))
+    token['form'] = form
+
+    return render_to_response('registration/registration_form.html', token)
+
+def registration_complete(request):
+    return render_to_response('registration/registration_complete.html')
+
+def loggedin(request):
+    return render_to_response('registration/loggedin.html',
+                              {'username': request.user.username})
 
