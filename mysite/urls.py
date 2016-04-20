@@ -11,9 +11,9 @@ urlpatterns = [
     url(r'', include('blog.urls')),
 
 # Registration URLs
-    url(r'^accounts/register/$', 'mysite.views.register', name='register'),
-    url(r'^accounts/register/complete/$', 'mysite.views.registration_complete', name='registration_complete'),
+ 	url(r'^accounts/register/$', 'blog.views.register', name='register'),
+    url(r'^accounts/register/registration_complete/$', 'blog.views.registration_complete', name='registration_complete'),
 
 # Auth-related URLs:
-    url(r'^accounts/loggedin/$', 'mysite.views.loggedin', name='loggedin'),
+    url(r'^accounts/loggedin/$', 'blog.views.loggedin', name='loggedin'),
 ]

@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404, redirect, render_to_response from django.http import HttpResponseRedirect from
-    django.contrib.auth.forms import UserCreationForm from
-    django.core.context_processors import csrf
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response 
+from django.http import HttpResponseRedirect 
+from django.contrib.auth.forms import UserCreationForm 
+from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
@@ -99,15 +101,13 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/accounts/register/complete')
-
+            return redirect('blog.views.registration_complete')
     else:
         form = UserCreationForm()
-    token = {}
-    token.update(csrf(request))
-    token['form'] = form
-
-    return render_to_response('registration/registration_form.html', token)
+        token = {}
+        token.update(csrf(request))
+        token['form'] = form
+        return render_to_response('registration/registration_form.html', token)
 
 def registration_complete(request):
     return render_to_response('registration/registration_complete.html')
