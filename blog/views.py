@@ -5,8 +5,13 @@ from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
-from .models import Post, Comment
-from .forms import PostForm, CommentForm
+
+from django.template import RequestContext
+from django.core.urlresolvers import reverse
+
+
+from .models import Post, Comment, Document
+from .forms import PostForm, CommentForm, DocumentForm
 
 def login(request):
     return render(request, 'blog/login.html', {})   
@@ -115,4 +120,30 @@ def registration_complete(request):
 def loggedin(request):
     return render_to_response('registration/loggedin.html',
                               {'username': request.user.username})
+
+def list(request):
+    # Handle file upload
+    if request.method == 'POST':
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            newdoc = Document(docfile = request.FILES['docfile'])
+            newdoc.save()
+
+            # Redirect to the document list after POST
+            return HttpResponseRedirect(reverse('list'))
+    else:
+        form = DocumentForm() # A empty, unbound form
+
+    # Load documents for the list page
+    documents = Document.objects.all()
+
+    # Render list page with the documents and the form
+    return render_to_response(
+        'blog/list.html',
+        {'documents': documents, 'form': form},
+        context_instance=RequestContext(request)
+    )
+
+def index(request):
+    return render_to_response('blog/index.html')
 

@@ -13,3 +13,8 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('text',)
+
+class DocumentForm(forms.Form):
+    docfile = forms.FileField(
+        label='Select a file',
+    )

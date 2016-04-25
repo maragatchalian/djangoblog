@@ -62,6 +62,10 @@ DATABASES = {
     }
 }
 
+# For Uploads
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 SITE_ID = 3
 
 SOCIALACCOUNT_PROVIDERS = \
