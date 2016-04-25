@@ -121,6 +121,7 @@ def loggedin(request):
     return render_to_response('registration/loggedin.html',
                               {'username': request.user.username})
 
+@login_required
 def list(request):
     # Handle file upload
     if request.method == 'POST':
